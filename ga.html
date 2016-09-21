@@ -11775,7 +11775,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -11818,6 +11818,20 @@ div#notebook {
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Unity ID:  &lt;unity-id&gt;
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -11835,7 +11849,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Few Utility functions</span>
@@ -11915,14 +11929,14 @@ div#notebook {
         <span class="n">O</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="c1"># TODO 2: Code up decisions and objectives below for the problem</span>
         <span class="c1"># using the auxilary classes provided above.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">decisions</span> <span class="o">=</span> <span class="bp">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">objectives</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decisions</span> <span class="o">=</span> <span class="p">[</span><span class="n">Decision</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">Decision</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">objectives</span> <span class="o">=</span> <span class="p">[</span><span class="n">Objective</span><span class="p">(</span><span class="s1">&#39;S&#39;</span><span class="p">),</span> <span class="n">Objective</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">)]</span>
         
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">point</span><span class="p">):</span>
         <span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="n">h</span><span class="p">]</span> <span class="o">=</span> <span class="n">point</span><span class="o">.</span><span class="n">decisions</span>
-        <span class="n">point</span><span class="o">.</span><span class="n">objectives</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="c1"># TODO 3: Evaluate the objectives S and T for the point.</span>
+        
         <span class="k">return</span> <span class="n">point</span><span class="o">.</span><span class="n">objectives</span>
     
     <span class="nd">@staticmethod</span>
@@ -11934,9 +11948,30 @@ div#notebook {
     <span class="k">def</span> <span class="nf">generate_one</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># TODO 5: Generate a valid instance of Point.</span>
         <span class="k">return</span> <span class="bp">None</span>
+
+<span class="n">cone</span> <span class="o">=</span> <span class="n">Problem</span><span class="p">()</span>
+<span class="n">point</span> <span class="o">=</span> <span class="n">cone</span><span class="o">.</span><span class="n">generate_one</span><span class="p">()</span>
+<span class="n">cone</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{	:decisions [7.72, 9.3]
+ 	:objectives [293.1399701738164, 480.3738657795223]
+}
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -11954,17 +11989,35 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[62]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">populate</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
     <span class="n">population</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="c1"># TODO 6: Create a list of points of length &#39;size&#39;</span>
     <span class="k">return</span> <span class="n">population</span>
-        
+
+<span class="c1"># or if ur python OBSESSED</span>
+<span class="c1">#        return [problem.generate_one() for _ in xrange(size)]</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">populate</span><span class="p">(</span><span class="n">cone</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[{:decisions [8.56, 11.44] :objectives None}, {:decisions [5.91, 12.22] :objectives None}, {:decisions [6.39, 12.76] :objectives None}, {:decisions [4.01, 14.29] :objectives None}, {:decisions [9.53, 16.36] :objectives None}]
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -11981,16 +12034,35 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[63]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">crossover</span><span class="p">(</span><span class="n">mom</span><span class="p">,</span> <span class="n">dad</span><span class="p">):</span>
     <span class="c1"># TODO 7: Create a new point which contains decisions from </span>
     <span class="c1"># the first half of mom and second half of dad</span>
-    <span class="k">return</span> <span class="n">Point</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">None</span>
+
+<span class="n">pop</span> <span class="o">=</span> <span class="n">populate</span><span class="p">(</span><span class="n">cone</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">crossover</span><span class="p">(</span><span class="n">pop</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pop</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[10]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{:decisions [9.76, 15.32] :objectives None}</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -12011,10 +12083,10 @@ div#notebook {
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">mutate</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">mutation_rate</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
-    <span class="c1"># TODO 8: Iterate through all the decisions in the point</span>
+    <span class="c1"># TODO 8: Iterate through all the decisions in the problem</span>
     <span class="c1"># and if the probability is less than mutation rate</span>
     <span class="c1"># change the decision(randomly set it between its max and min).</span>
-    <span class="k">return</span> <span class="n">point</span>
+    <span class="k">return</span> <span class="bp">None</span>
 </pre></div>
 
 </div>
@@ -12030,8 +12102,8 @@ div#notebook {
 <h3 id="Fitness-Evaluation">Fitness Evaluation<a class="anchor-link" href="#Fitness-Evaluation">&#182;</a></h3><p>To evaluate fitness between points we use binary domination. Binary Domination is defined as follows:</p>
 <ul>
 <li>Consider two points one and two.</li>
-<li>For every decision <strong>o</strong> and <strong>t</strong> in <strong>one</strong> and <strong>two</strong>, <strong>o</strong> &lt;= <strong>t</strong></li>
-<li>Atleast one decision <strong>o</strong> and <strong>t</strong> in <strong>one</strong> and <strong>two</strong>, <strong>o</strong> == <strong>t</strong></li>
+<li>For every objective <strong>o</strong> and <strong>t</strong> in <strong>one</strong> and <strong>two</strong>, <strong>o</strong> &lt;= <strong>t</strong></li>
+<li>Atleast one objective <strong>o</strong> and <strong>t</strong> in <strong>one</strong> and <strong>two</strong>, <strong>o</strong> &lt; <strong>t</strong></li>
 </ul>
 <p><strong>Note</strong>: Binary Domination is not the best method to evaluate fitness but due to its simplicity we choose to use it for this workshop.</p>
 
